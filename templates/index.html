@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/assets/style.css">
+    <link rel="icon" type="image/png" href="assets/main-logo.png">
+    <title>URLShorty</title>
+</head>
+
+<body>
+    <nav>
+        <img src="assets/main-logo.png" alt="URLShorty">
+        <a href="/">GitHub</a>
+    </nav>
+
+    <section>
+        <h1>Welcome to URLShorty! A simple URL Shortener for your <u>long-ass</u> URLs</h1>
+        <h2>Enter your URL and get the shortened URL in a jiffy!</h2>
+    </section>
+
+    <form action="/" method="post">
+        <label for="url">Enter URL:</label>
+        <input type="url" id="url" name="url" required>
+        <button type="submit">Shorten!</button>
+    </form>
+
+    {{if .ShortURL}}
+    <div>
+        <div>
+            <p>Original URL:</p>
+            <a href="{{.LongURL}}" target="_blank">{{.LongURL}}</a>
+        </div>
+        <div>
+            <p>Shortened URL:</p>
+            <a href="{{.ShortURL}}" target="_blank">{{.ShortURL}}</a>
+        </div>
+    </div>
+    {{end}}
+</body>
+
+</html>
