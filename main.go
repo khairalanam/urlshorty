@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	"net/http"
+	"os"
 
 	"github.com/gorilla/mux"
 	_ "github.com/mattn/go-sqlite3"
@@ -30,8 +31,15 @@ func main() {
 	// Handle all assets in the assets folder
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets"))))
 
+	// for Railway deployment
+	port := os.Getenv("PORT")
+
+	if port == "" {
+		port = "3000"
+	}
+
 	// Start the server
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe("0.0.0.0:" + port, nil)
 }
 
 
